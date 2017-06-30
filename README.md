@@ -2,6 +2,7 @@
 
 
 1.Enable mqtt in cordeva:
+
 	cordova.plugins.backgroundMode.enable(serverid, topic1, topic2, topic3);
 
 2.Change topic in src\android\BackgroundMode.java line 84:
@@ -44,17 +45,25 @@
 
 
 3.Change mqttserver port:
+
 	src\android\MQTTConnection.java line 32:
+	
 		private static int _Port=1883;
 	
 4.Change Service Name:
+
 	src\android\ForegroundService.java line 172:
+	
 		String serName="ThisApp.ForegroundProcess";
+		
 		line 187:
+		
 		String serName="ThisApp.ForegroundProcess";
 		
 5.Change DefaultNoticeText:
+
 	src\android\ForegroundService.java  line 217:
+	
 		Notification.Builder notification = new Notification.Builder(c)
             .setContentIntent(pendingIntent)
             .setContentTitle("NewNotice") ----notice title
