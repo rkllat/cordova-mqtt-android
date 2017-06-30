@@ -114,13 +114,13 @@ public class BackgroundMode extends CordovaPlugin {
 				}
 				_Topic[length-3]=_userID;
 				_Topic[length-2]=orgId;
-				_Topic[length-1]="USTCOriXuanke";
+				_Topic[length-1]="topicAll";
 			}
 			else{
 				_Topic=new String[2];
 				_Topic[0]=_userID;
 				_Topic[1]=orgId;
-				_Topic[2]="USTCOriXuanke";
+				_Topic[2]="topicAll";
 			}
 			MQTT_HOST=ip;
 			Activity context = cordova.getActivity();

@@ -169,20 +169,7 @@ public class ForegroundService extends Service {
 	
 	public static Boolean getRunningServicesInfo(Context c) {
 		Boolean hasService=false;
-		String serName="USTCORIXuanke.ForegroundProcess";
-		/*
-        ActivityManager activityManager = (ActivityManager)c.getSystemService(ACTIVITY_SERVICE);
-        List<ActivityManager.RunningServiceInfo> services = activityManager.getRunningServices(100);
-
-        Iterator<ActivityManager.RunningServiceInfo> l = services.iterator();
-        while (l.hasNext()) {
-                ActivityManager.RunningServiceInfo si = (ActivityManager.RunningServiceInfo) l.next();
-				Log.i("所有服务","Service:"+si.service.toString());
-                if(si.service.toString().indexOf(serName)>-1){
-                  hasService=true;
-                  break;
-                }
-        }*/
+		String serName="ThisApp.ForegroundProcess";
 		ActivityManager activityManager = (ActivityManager)c.getSystemService(ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> processes = activityManager.getRunningAppProcesses();
 		for(ActivityManager.RunningAppProcessInfo process:processes){		
@@ -197,14 +184,14 @@ public class ForegroundService extends Service {
 	
 	public static Boolean StopRunningServicesInfo(Context c) {	
 		Boolean stop=false;
-		String serName="USTCORIXuanke.ForegroundProcess";
+		String serName="ThisApp.ForegroundProcess";
 		ActivityManager activityManager = (ActivityManager)c.getSystemService(ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> processes = activityManager.getRunningAppProcesses();
 		for(ActivityManager.RunningAppProcessInfo process:processes){		
 			if(process.processName.toString().indexOf(serName)>-1)
 			{
 				activityManager.killBackgroundProcesses(process.processName);
-				System.out.println("disbale结束进程！！！！！");
+				System.out.println("disbale Process！！！！！");
 				stop=true;
 				break;
 			}
@@ -214,7 +201,7 @@ public class ForegroundService extends Service {
 	
 	public static void connect(String ip,int port,String _userid,String[] _Topic) {
 		try {
-			System.out.println("开始连接");
+			System.out.println("Begin Process！！！！！");
 			mConnection = new MQTTConnection(ip,port,_userid,_Topic);
 		} catch (MqttException e) {
 			// Schedule a reconnect, if we failed to connect
@@ -223,7 +210,7 @@ public class ForegroundService extends Service {
 	}
 	
 	public static void dicConnect(){
-		System.out.println("关闭连接");
+		System.out.println("close Process");
 		mConnection.disconnect();
 	}
 	
@@ -239,9 +226,9 @@ public class ForegroundService extends Service {
 
             Notification.Builder notification = new Notification.Builder(c)
             .setContentIntent(pendingIntent)
-            .setContentTitle("选课通知")
+            .setContentTitle("NewNotice")
             .setContentText(text)
-            .setTicker("您收到一条选课通知")
+            .setTicker("NoticeDescription")
             .setOngoing(false)
             .setSmallIcon(resId);
              if (Build.VERSION.SDK_INT < 16) {
